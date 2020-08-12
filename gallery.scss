@@ -1,0 +1,134 @@
+@mixin desktop {
+    @media (min-width: 1200px) {
+    	@content;
+    }
+}
+@mixin laptop {
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+    	@content;
+    }
+}
+@mixin tablets {
+    @media (min-width: 768px) and (max-width: 991.98px) {
+    	@content;
+    }
+}
+@mixin landscape {
+   @media (min-width: 576px) and (max-width: 767.98px) {
+   		@content;
+   }
+}
+@mixin phones {
+   @media (max-width: 575.98px) {
+   		@content;
+   }
+}
+
+.container {
+	max-width: 860px;
+	min-width: 320px;
+	margin-left: auto;
+	margin-right: auto;
+	.container__form  { 
+		text-align: center;
+		.container__form__input.container__form__input_url-img {
+			width: 65%;
+			padding: 10px 12px;
+			border: 1px solid #cecece;
+			background: #F6F6f6;
+			border-radius: 8px;
+		}
+		.container__form__input.container__form__input_add-images {
+			color: #fff;
+			margin-top: 10px;
+			text-decoration: none;
+			cursor: pointer;
+			user-select: none;
+			background: #0ccece;
+			padding: 10px 12px;
+			outline: none;
+			border-radius: 8px
+		}
+		.container__form__input_add-images_mobile {
+			@include desktop {
+				display: none;
+			}
+			@include laptop {
+				display: none;
+			}
+			@include tablets {
+				display: none;
+			}
+			@include landscape {
+				display: none;
+			}
+		}
+		.container__form__input_add-images_desktop {
+			@include phones {
+				display: none;
+			}
+		}
+		.container__form__drag-n-drop {
+			position: relative;
+			border: 2px dotted #cecece;
+			background: #F6F6f6;
+			border-radius: 8px;
+		    width: 50%;
+		    margin: 10px auto;
+		    height: 175px;
+		}
+		.container__form__drag-n-drop.hover {
+			background: #fff;
+		}
+		.container__form__drag-n-drop__choose-image {
+			position: absolute;
+		    top: 40%;
+		    font-size: 18px;
+		    left: 0;
+		    right: 0;
+		}
+		.container__form__drag-n-drop__file {
+			cursor: pointer;
+			position: absolute;
+			height: 100%;
+    		width: 100%;
+    		opacity: 0;
+    		top: 0;
+    		left: 0;
+		}
+	}
+	.container__list-images {
+		position: relative;
+    	width: 100%;
+		.container__list-images__div {
+			height: 160px;
+			float: left; 
+			position: relative; 
+			margin: 6px 3px;
+			@include tablets {
+				height: 120px;
+			}
+			@include landscape {
+				height: 100px;
+			}
+			@include phones {
+				height: 70px;
+			}
+		}
+		.container__list-images__div__img {
+			max-height: 100%; 
+			max-width: 100%; 
+			display: block; 
+			margin: auto;
+		}
+		.container__list-images__div__delete-icon {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    padding: 4px;
+		    font-size: 18px;
+		    color: #bd0505;
+		    cursor: pointer;
+		}
+	}
+}
